@@ -28,17 +28,23 @@ export class HomeComponentComponent {
     this.housingService.getAllHousingLocations().then((housingLocationList: Housinglocation[]) => {
       this.housingLocationList = housingLocationList;
       this.filteredLocationList = housingLocationList;
+      console.log('filtered list',this.filteredLocationList)
     });
   }
 
+
   //search by text
   filterResults(text: string) {
+ 
     if (!text) {
       this.filteredLocationList = this.housingLocationList;
       return;
     }
+
     this.filteredLocationList = this.housingLocationList.filter((housingLocation) =>
       housingLocation?.city.toLowerCase().includes(text.toLowerCase()),
+      console.log("filtered location list:",this.filteredLocationList)
     );
+    
   }
 }
